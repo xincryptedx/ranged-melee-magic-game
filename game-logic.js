@@ -2,10 +2,22 @@
 //Melee beats Ranged. Ranged beats Magic. Magic beats Melee.
 
 //Program Flow
+
+//Variables
+let playerSelection = "";
+let computerSelection = "";
+
 //Player initiates a new game. Games consist of five rounds and are called early if either the player or
 //computer reach three points.
 
 //After a new game has begun, the computer randomly decides its choice.
+function getComputerSelection (){
+
+}
+
+function getRandomInt (min, max){
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 //The player is prompted to make their choice.
 
