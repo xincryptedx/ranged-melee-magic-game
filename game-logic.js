@@ -12,7 +12,7 @@ let computerSelection = "";
 
 //After a new game has begun, the computer randomly decides its choice.
 function getComputerSelection (){
-
+    
 }
 
 function getRandomInt (min, max){
