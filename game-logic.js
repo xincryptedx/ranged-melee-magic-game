@@ -20,31 +20,30 @@ function playRound(playerSelection){
     //Randomize the computer's choice
     computerSelection = getComputerSelection();
 
-    console.log(computerSelection + ": computer selection.");
-
     //Ensure selections are in lowercase for accurrate comparisons
     computerSelection = computerSelection.toLowerCase();
     playerSelection = playerSelection.toLowerCase();
 
+    //Player wins
     if (attacks[playerSelection].strong === computerSelection)
     {
-        return "The player won."
+        return capitalize(playerSelection) + " is strong to " + capitalize(computerSelection) + ". You win!"
     }
-
+    //Player loses
     if (attacks[playerSelection].weak === computerSelection)
     {
-        return "The computer won."
+        return capitalize(playerSelection) + " is weak to " + capitalize(computerSelection) + ". You lose!"
     }
-
+    //Tie
     else 
     {
-        return "There was a tie."
+        return capitalize(playerSelection) + " and " + capitalize(computerSelection) + " are neutral to each other. Tie!"
     }
 }
 
 //After a new game has begun, the computer randomly decides its choice.
 function getComputerSelection (){
-    let choice = getRandomInt(1,3); //Get a random int between 1 and 3
+    let choice = getRandomInt(1,3);
 
     switch(choice){                 //Return ranged, melee, or magic based on outcome
         case 1:
@@ -57,9 +56,13 @@ function getComputerSelection (){
             return "Computer selection error";
     }
 }
-
+//Get a random int between 1 and 3
 function getRandomInt (min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+//This capitalizes the first letter in a string. Useful for formatting selections for outcome messages.
+function capitalize(text){
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
 
 //The player is prompted to make their choice.
