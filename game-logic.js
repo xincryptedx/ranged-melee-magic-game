@@ -21,9 +21,6 @@ const attacks = {
 //Player initiates a new game. Games consist of five rounds and are called early if either the player or
 //computer reach three points.
 function game(){
-    round = 1;          //Initialized to 1 since it is always at least round 1
-    playerScore = 0;    
-    computerScore = 0;
 
     //Get player and computer selections
     computerSelection = getComputerSelection();
@@ -69,6 +66,13 @@ function verifyPlayerSelection(selection){
         return true;                         //if input is valid, return true
     }
 
+}
+
+//Sets variables to starting values for new game
+function initializeGame(){
+    round = 1;          
+    playerScore = 0;    
+    computerScore = 0;
 }
 
 //One round of comparing player and computer selections
