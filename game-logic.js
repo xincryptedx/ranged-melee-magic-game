@@ -22,9 +22,11 @@ function game(){
     let computerScore = 0;
 
     //Get player and computer selections
+    playerSelection = getPlayerSelection();
+    computerSelection = getComputerSelection();
 
     //Play the round
-
+    
     //Update score and round
 
     //Determine if new round is needed or if there is an overall winner
@@ -45,9 +47,7 @@ function getPlayerSelection(){
 }
 
 //One round of comparing player and computer selections
-function playRound(playerSelection){
-    //Randomize the computer's choice
-    computerSelection = getComputerSelection();
+function playRound(playerSelection, computerSelection){
 
     //Ensure selections are in lowercase for accurrate comparisons
     computerSelection = computerSelection.toLowerCase();
