@@ -16,6 +16,35 @@ const attacks = {
 
 //Player initiates a new game. Games consist of five rounds and are called early if either the player or
 //computer reach three points.
+function game(){
+    let round = 1;          //Initialized to 1 since it is always at least round 1
+    let playerScore = 0;    
+    let computerScore = 0;
+
+    //Get player and computer selections
+
+    //Play the round
+
+    //Update score and round
+
+    //Determine if new round is needed or if there is an overall winner
+}
+
+//Gets player function while giving current round and score
+function getPlayerSelection(){
+    //Display a message with current round and scores, and ask for player choice
+    playerSelection = prompt("Round " + round + ". Score: Player " + playerScore + ", Computer " + computerScore + ". Choose attack style.")
+
+    //Make sure playerSelection is valid. If not ask for new selection.
+    playerSelection = playerSelection.toLowerCase();    //lowercase for comparison
+
+    if (!attacks.hasOwnProperty(playerSelection))       //if the selection is not in the attacks object
+    {
+
+    }
+}
+
+//One round of comparing player and computer selections
 function playRound(playerSelection){
     //Randomize the computer's choice
     computerSelection = getComputerSelection();
