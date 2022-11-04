@@ -26,8 +26,20 @@ function game(){
     computerScore = 0;
 
     //Get player and computer selections
-    playerSelection = getPlayerSelection();
     computerSelection = getComputerSelection();
+    playerSelection = getPlayerSelection();
+
+    //Verify player selection
+    let isValidInput = false;
+    while (!isValidInput){
+        isValidInput = verifyPlayerSelection(playerSelection);
+
+        if (isValidInput)
+        {
+            break;
+        }
+        else playerSelection = getPlayerSelection();
+    }
 
     //Play the round
     
