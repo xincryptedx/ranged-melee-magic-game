@@ -21,27 +21,52 @@ const attacks = {
 //Player initiates a new game. Games consist of five rounds and are called early if either the player or
 //computer reach three points.
 function game(){
+    //Initialize game variables
 
-    //Get player and computer selections
-    computerSelection = getComputerSelection();
-    playerSelection = getPlayerSelection();
-
-    //Verify player selection
-    let isValidInput = false;
-    while (!isValidInput){
-        isValidInput = verifyPlayerSelection(playerSelection);
-
-        if (isValidInput)
+    //If it is not > round 5 and no one has 3 points
+    for (let r = 1; r <=5; r++){
+        if (playerScore < 3 && computerScore < 3)
         {
-            break;
+            //Get player and computer selections
+            computerSelection = getComputerSelection();
+            playerSelection = getPlayerSelection();
+
+            //Verify player selection
+            let isValidInput = false;
+            while (!isValidInput){
+                isValidInput = verifyPlayerSelection(playerSelection);
+
+                if (isValidInput)
+                {
+                    break;
+                }
+                else playerSelection = getPlayerSelection();
+            }
+
+            //Play the round and display the results in the console.
+            console.log(playRound(playerSelection, computerSelection));
         }
-        else playerSelection = getPlayerSelection();
+
+    //Else player wins with 3 points.
+    else if (playerScore >= 3)
+    {
+        console.log("The player wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
+        break;
+    }
+    //Else computer wins with 3 points.
+    else if (computerScore >=3)
+    {
+        console.log("The Computer wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
+        break;
+    }
+    //Else 5 rounds are up.
+    else if (round >= 5)
+    {
+        //Delcare rounds up and determine winner
     }
 
-    //Play the round and display the results in the console.
-    console.log(playRound(playerSelection, computerSelection));
-
-    //Determine if new round is needed or if there is an overall winner
+    }
+ 
 }
 
 //Gets player function while giving current round and score
