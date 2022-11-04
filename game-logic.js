@@ -7,6 +7,10 @@
 let playerSelection = "Melee"; //Set to Melee for testing purposes. Change to "" later.
 let computerSelection = "";
 
+let round = 1;                 //Initialized to 1 since it is always at least round 1
+let playerScore = 0;    
+let computerScore = 0;
+
 //Object that defines selection outcomes
 const attacks = {
     ranged : {weak: "melee", strong: "magic"},
@@ -17,9 +21,9 @@ const attacks = {
 //Player initiates a new game. Games consist of five rounds and are called early if either the player or
 //computer reach three points.
 function game(){
-    let round = 1;          //Initialized to 1 since it is always at least round 1
-    let playerScore = 0;    
-    let computerScore = 0;
+    round = 1;          //Initialized to 1 since it is always at least round 1
+    playerScore = 0;    
+    computerScore = 0;
 
     //Get player and computer selections
     playerSelection = getPlayerSelection();
@@ -34,16 +38,26 @@ function game(){
 
 //Gets player function while giving current round and score
 function getPlayerSelection(){
-    //Display a message with current round and scores, and ask for player choice
-    playerSelection = prompt("Round " + round + ". Score: Player " + playerScore + ", Computer " + computerScore + ". Choose attack style.")
+    //Display a message with current round and scores, and ask for player input
+    return prompt("Round " + round + ". Score: Player " + playerScore + ", Computer " + computerScore + ". Choose attack style.");
+}
 
-    //Make sure playerSelection is valid. If not ask for new selection.
-    playerSelection = playerSelection.toLowerCase();    //lowercase for comparison
+//Checks to see if player selection is a valid choice
+function verifyPlayerSelection(selection){
+    
+    //Make sure selection is valid. If not ask for new selection.
+    selection = selection.toLowerCase();            //lowercase for comparison
 
-    if (!attacks.hasOwnProperty(playerSelection))       //if the selection is not in the attacks object
+    if (!attacks.hasOwnProperty(selection))       //if the input is not in the attacks object display alert and return false
     {
-
+        alert("That is not a valid choice. Please choose Melee, Magic, or Ranged.");
+        return false;
     }
+    else
+    {
+        return true;                         //if input is valid, return true
+    }
+
 }
 
 //One round of comparing player and computer selections
