@@ -4,11 +4,43 @@
 //Program Flow
 
 //Variables
-let playerSelection = "";
+let playerSelection = "Melee"; //Set to Melee for testing purposes. Change to "" later.
 let computerSelection = "";
+
+//Object that defines selection outcomes
+const attacks = {
+    ranged : {weak: "melee", strong: "magic"},
+    melee : {weak: "magic", strong: "ranged"},
+    magic : {weak: "ranged", strong: "melee"}
+}
 
 //Player initiates a new game. Games consist of five rounds and are called early if either the player or
 //computer reach three points.
+function playRound(playerSelection){
+    //Randomize the computer's choice
+    computerSelection = getComputerSelection();
+
+    console.log(computerSelection + ": computer selection.");
+
+    //Ensure selections are in lowercase for accurrate comparisons
+    computerSelection = computerSelection.toLowerCase();
+    playerSelection = playerSelection.toLowerCase();
+
+    if (attacks[playerSelection].strong === computerSelection)
+    {
+        return "The player won."
+    }
+
+    if (attacks[playerSelection].weak === computerSelection)
+    {
+        return "The computer won."
+    }
+
+    else 
+    {
+        return "There was a tie."
+    }
+}
 
 //After a new game has begun, the computer randomly decides its choice.
 function getComputerSelection (){
@@ -16,11 +48,11 @@ function getComputerSelection (){
 
     switch(choice){                 //Return ranged, melee, or magic based on outcome
         case 1:
-            return "Ranged";
+            return "ranged";
         case 2:
-            return "Melee";
+            return "melee";
         case 3:
-            return "Magic";
+            return "magic";
         default:
             return "Computer selection error";
     }
