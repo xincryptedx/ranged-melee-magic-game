@@ -22,6 +22,7 @@ const attacks = {
 //computer reach three points.
 function game(){
     //Initialize game variables
+    initializeGame();
 
     //If it is not > round 5 and no one has 3 points
     for (let r = 1; r <=5; r++){
@@ -47,26 +48,59 @@ function game(){
             console.log(playRound(playerSelection, computerSelection));
         }
 
-    //Else player wins with 3 points.
-    else if (playerScore >= 3)
-    {
-        console.log("The player wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
-        break;
-    }
-    //Else computer wins with 3 points.
-    else if (computerScore >=3)
-    {
-        console.log("The Computer wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
-        break;
-    }
-    //Else 5 rounds are up.
-    else if (round >= 5)
-    {
-        //Delcare rounds up and determine winner
-    }
+        //Determine outcomes
+        //Player wins with 3 points.
+        if (playerScore >= 3)
+        {
+            playerWins();
+            break;
+        }
+        //Else computer wins with 3 points.
+        else if (computerScore >=3)
+        {
+            computerWins();
+            break;
+        }
+        //Else 5 rounds are up.
+        else if (round >= 5)
+        {
+            //Player has more points
+            if (playerScore > computerScore)
+            {
+                playerWins();
+                break;
+            }
+            //Computer has more points
+            if (playerScore < computerScore)
+            {
+                computerWins();
+                break;
+            }
+            //They have the same points
+            if (playerScore === computerScore)
+            {
+                gameTie();
+                break;
+            }
+        }
 
+        //Increment the round variable
+        round++;
     }
  
+}
+
+//Game outcome functions
+function playerWins(){
+    console.log("The player wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
+}
+
+function computerWins(){
+    console.log("The Computer wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
+}
+
+function gameTie(){
+    console.log("It is a tie game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
 }
 
 //Gets player function while giving current round and score
@@ -118,6 +152,7 @@ function playRound(playerSelection, computerSelection){
     if (attacks[playerSelection].weak === computerSelection)
     {
         //Update computerScore and return message
+        computerScore++;
         return capitalize(playerSelection) + " is weak to " + capitalize(computerSelection) + ". You lose!"
     }
     //Tie
