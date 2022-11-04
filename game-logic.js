@@ -12,7 +12,18 @@ let computerSelection = "";
 
 //After a new game has begun, the computer randomly decides its choice.
 function getComputerSelection (){
-    
+    let choice = getRandomInt(1,3); //Get a random int between 1 and 3
+
+    switch(choice){                 //Return ranged, melee, or magic based on outcome
+        case 1:
+            return "Ranged";
+        case 2:
+            return "Melee";
+        case 3:
+            return "Magic";
+        default:
+            return "Computer selection error";
+    }
 }
 
 function getRandomInt (min, max){
