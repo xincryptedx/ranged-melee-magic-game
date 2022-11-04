@@ -41,9 +41,8 @@ function game(){
         else playerSelection = getPlayerSelection();
     }
 
-    //Play the round
-    
-    //Update score and round
+    //Play the round and display the results in the console.
+    console.log(playRound(playerSelection, computerSelection));
 
     //Determine if new round is needed or if there is an overall winner
 }
@@ -82,11 +81,14 @@ function playRound(playerSelection, computerSelection){
     //Player wins
     if (attacks[playerSelection].strong === computerSelection)
     {
+        //Update playerScore and return message
+        playerScore ++;
         return capitalize(playerSelection) + " is strong to " + capitalize(computerSelection) + ". You win!"
     }
     //Player loses
     if (attacks[playerSelection].weak === computerSelection)
     {
+        //Update computerScore and return message
         return capitalize(playerSelection) + " is weak to " + capitalize(computerSelection) + ". You lose!"
     }
     //Tie
