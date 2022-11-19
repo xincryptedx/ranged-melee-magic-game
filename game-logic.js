@@ -18,6 +18,8 @@ const attacks = {
     magic : {weak: "ranged", strong: "melee"}
 }
 
+const outcome = document.querySelector(".outcome");
+
 //Events
 const buttons = document.querySelectorAll("#btn");
 
@@ -66,14 +68,19 @@ function compareScores(){
 
 function playerWins(){
     console.log("The player wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
+    outcome.textContent = "The player wins the game!";
+    initializeGame();
 }
 
 function computerWins(){
     console.log("The Computer wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
+    outcome.textContent = "The computer wins the game!";
+    initializeGame();
 }
 
 function gameTie(){
     console.log("It is a tie game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
+    initializeGame();
 }
 
 //Gets player function while giving current round and score
