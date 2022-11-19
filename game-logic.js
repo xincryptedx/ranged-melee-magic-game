@@ -18,15 +18,23 @@ const attacks = {
     magic : {weak: "ranged", strong: "melee"}
 }
 
-const outcome = document.querySelector(".outcome");
+//Results elements
+const outcomeText = document.querySelector(".outcome");
+const roundText = document.querySelector(".round");
+const playerScoreText = document.querySelector(".playerScore");
+const computerScoreText = document.querySelector(".computerScore");
 
 //Events
 const buttons = document.querySelectorAll("#btn");
 
 buttons.forEach((button) => {button.addEventListener('click', () => {
                                 console.log(playRound(button.dataset.attack));
+                                updateScoreDisplay();
                                 compareScores();
 })});
+
+//This is called so display is initialized at page load
+updateScoreDisplay();
 
 function game(){
 
@@ -54,6 +62,12 @@ function game(){
  
 }
 
+function updateScoreDisplay(){
+    roundText.textContent = "Round: " + round;
+    playerScoreText.textContent = "Player Score: " + playerScore;
+    computerScoreText.textContent = "Computer Score: " + computerScore;
+}
+
 //Game outcome functions
 function compareScores(){
     if (playerScore == winningScore)
@@ -68,13 +82,13 @@ function compareScores(){
 
 function playerWins(){
     console.log("The player wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
-    outcome.textContent = "The player wins the game!";
+    outcomeText.textContent = "The player wins the game!";
     initializeGame();
 }
 
 function computerWins(){
     console.log("The Computer wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
-    outcome.textContent = "The computer wins the game!";
+    outcomeText.textContent = "The computer wins the game!";
     initializeGame();
 }
 
