@@ -11,6 +11,8 @@ let round = 1;                 //Initialized to 1 since it is always at least ro
 let playerScore = 0;    
 let computerScore = 0;
 
+const winningScore = 5;
+
 //Object that defines selection outcomes
 const attacks = {
     ranged : {weak: "melee", strong: "magic"},
@@ -18,70 +20,43 @@ const attacks = {
     magic : {weak: "ranged", strong: "melee"}
 }
 
-//Player initiates a new game. Games consist of five rounds and are called early if either the player or
-//computer reach three points.
+//Player initiates a new game. Game is over when player or computer has 5 points.
 function game(){
-    //Initialize game variables
+
     initializeGame();
 
-    //If it is not > round 5 and no one has 3 points
-    for (let r = 1; r <=5; r++){
-        if (playerScore < 3 && computerScore < 3)
-        {
-            //Get player and computer selections
-            computerSelection = getComputerSelection();
-            playerSelection = getPlayerSelection();
+    while (playerScore < winningScore && computerScore < winningScore){
 
-            //Verify player selection
-            let isValidInput = false;
-            while (!isValidInput){
-                isValidInput = verifyPlayerSelection(playerSelection);
+        computerSelection = getComputerSelection();
+        playerSelection = getPlayerSelection();
 
-                if (isValidInput)
-                {
-                    break;
-                }
-                else playerSelection = getPlayerSelection();
+        //Verify player selection
+        let isValidInput = false;
+        while (!isValidInput){
+            isValidInput = verifyPlayerSelection(playerSelection);
+
+            if (isValidInput)
+            {
+                break;
             }
-
-            //Play the round and display the results in the console.
-            console.log(playRound(playerSelection, computerSelection));
+            else playerSelection = getPlayerSelection();
         }
+
+        //Play the round and display the results in the console.
+        console.log(playRound(playerSelection, computerSelection));
 
         //Determine outcomes
         //Player wins with 3 points.
-        if (playerScore >= 3)
+        if (playerScore == winningScore)
         {
             playerWins();
             break;
         }
         //Else computer wins with 3 points.
-        else if (computerScore >=3)
+        else if (computerScore == winningScore)
         {
             computerWins();
             break;
-        }
-        //Else 5 rounds are up.
-        else if (round >= 5)
-        {
-            //Player has more points
-            if (playerScore > computerScore)
-            {
-                playerWins();
-                break;
-            }
-            //Computer has more points
-            if (playerScore < computerScore)
-            {
-                computerWins();
-                break;
-            }
-            //They have the same points
-            if (playerScore === computerScore)
-            {
-                gameTie();
-                break;
-            }
         }
 
         //Increment the round variable
