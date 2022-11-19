@@ -23,6 +23,7 @@ const buttons = document.querySelectorAll("#btn");
 
 buttons.forEach((button) => {button.addEventListener('click', () => {
                                 console.log(playRound(button.dataset.attack));
+                                compareScores();
 })});
 
 function game(){
@@ -46,16 +47,7 @@ function game(){
 
         console.log(playRound(playerSelection));
 
-        if (playerScore == winningScore)
-        {
-            playerWins();
-            break;
-        }
-        else if (computerScore == winningScore)
-        {
-            computerWins();
-            break;
-        }
+        compareScores();
 
         round++;
     }
@@ -63,6 +55,17 @@ function game(){
 }
 
 //Game outcome functions
+function compareScores(){
+    if (playerScore == winningScore)
+    {
+        playerWins();
+    }
+    else if (computerScore == winningScore)
+    {
+        computerWins();
+    }
+}
+
 function playerWins(){
     console.log("The player wins the game! Final score: Player " + playerScore + ", Computer " + computerScore + ".")
 }
