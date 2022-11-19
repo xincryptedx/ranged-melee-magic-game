@@ -48,8 +48,6 @@ function game(){
         console.log(playRound(playerSelection));
 
         compareScores();
-
-        round++;
     }
  
 }
@@ -110,6 +108,8 @@ function playRound(playerSelection){
 
     computerSelection = computerSelection.toLowerCase();
     playerSelection = playerSelection.toLowerCase();
+
+    round++;
 
     //Player wins
     if (attacks[playerSelection].strong === computerSelection)
