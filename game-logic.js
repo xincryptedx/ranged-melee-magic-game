@@ -20,14 +20,13 @@ const attacks = {
 
 //Events
 const buttons = document.querySelectorAll("#btn");
-console.log(buttons);
+
 
 function game(){
 
     initializeGame();
 
     while (playerScore < winningScore && computerScore < winningScore){
-        computerSelection = getComputerSelection();
         playerSelection = getPlayerSelection();
 
         //Verify player selection
@@ -101,6 +100,8 @@ function initializeGame(){
 
 //One round of comparing player and computer selections
 function playRound(playerSelection, computerSelection){
+    computerSelection = getComputerSelection();
+
     computerSelection = computerSelection.toLowerCase();
     playerSelection = playerSelection.toLowerCase();
 
