@@ -21,6 +21,9 @@ const attacks = {
 //Events
 const buttons = document.querySelectorAll("#btn");
 
+buttons.forEach((button) => {button.addEventListener('click', () => {
+                                console.log(playRound(button.dataset.attack));
+})});
 
 function game(){
 
@@ -41,7 +44,7 @@ function game(){
             else playerSelection = getPlayerSelection();
         }
 
-        console.log(playRound(playerSelection, computerSelection));
+        console.log(playRound(playerSelection));
 
         if (playerScore == winningScore)
         {
@@ -99,7 +102,7 @@ function initializeGame(){
 }
 
 //One round of comparing player and computer selections
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection){
     computerSelection = getComputerSelection();
 
     computerSelection = computerSelection.toLowerCase();
