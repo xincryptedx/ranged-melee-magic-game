@@ -2,7 +2,7 @@
 //Melee beats Ranged. Ranged beats Magic. Magic beats Melee.
 
 //Variables
-let playerSelection = "Melee"; //Set to Melee for testing purposes. Change to "" later.
+let playerSelection = "";
 let computerSelection = "";
 
 let round = 1;                 //Initialized to 1 since it is always at least round 1
@@ -38,24 +38,19 @@ function game(){
             else playerSelection = getPlayerSelection();
         }
 
-        //Play the round and display the results in the console.
         console.log(playRound(playerSelection, computerSelection));
 
-        //Determine outcomes
-        //Player wins with 3 points.
         if (playerScore == winningScore)
         {
             playerWins();
             break;
         }
-        //Else computer wins with 3 points.
         else if (computerScore == winningScore)
         {
             computerWins();
             break;
         }
 
-        //Increment the round variable
         round++;
     }
  
