@@ -18,6 +18,10 @@ const attacks = {
     magic : {weak: "ranged", strong: "melee"}
 }
 
+//Events
+const buttons = document.querySelectorAll("#btn");
+console.log(buttons);
+
 function game(){
 
     initializeGame();
