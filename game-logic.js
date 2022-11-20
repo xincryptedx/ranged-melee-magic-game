@@ -136,20 +136,20 @@ function playRound(playerSelection){
     if (attacks[playerSelection].strong === computerSelection)
     {
         playerScore ++;
-        outcomeText.textContent = capitalize(playerSelection) + " is strong to " + capitalize(computerSelection) + ". You win!"
+        outcomeText.textContent = capitalize(playerSelection) + "(Player) is strong to " + capitalize(computerSelection) + "(Computer). You win!"
         return capitalize(playerSelection) + " is strong to " + capitalize(computerSelection) + ". You win!"
     }
     //Player loses
     if (attacks[playerSelection].weak === computerSelection)
     {
         computerScore++;
-        outcomeText.textContent = capitalize(playerSelection) + " is weak to " + capitalize(computerSelection) + ". You lose!"
+        outcomeText.textContent = capitalize(playerSelection) + "(Player) is weak to " + capitalize(computerSelection) + "(Computer). You lose!"
         return capitalize(playerSelection) + " is weak to " + capitalize(computerSelection) + ". You lose!"
     }
     //Tie
     else 
     {
-        outcomeText.textContent = capitalize(playerSelection) + " and " + capitalize(computerSelection) + " are neutral to each other. Tie!"
+        outcomeText.textContent = capitalize(playerSelection) + "(Player) and " + capitalize(computerSelection) + "(Computer) are neutral to each other. Tie!"
         return capitalize(playerSelection) + " and " + capitalize(computerSelection) + " are neutral to each other. Tie!"
     }
 }
